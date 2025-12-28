@@ -9,7 +9,7 @@ then
     echo $1 not found in demos/903fortran
     exit
 fi
-rm -f .*rm -f .ascii .data .linker .plot.png .punch .reader .reverse .save  .stop .store
+rm -f .ascii .data .linker .plot.png .punch .reader .reverse .save  .stop .store
 echo loading Fortran
 cp bin/903fortran/fort16klg_iss5_store .store
 echo convert input tape $1
