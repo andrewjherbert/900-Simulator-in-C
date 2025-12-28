@@ -9,7 +9,7 @@ then
     echo $1 not found in demos/903algol
     exit
 fi
-rm -f .*rm -f .ascii .data .linker .plot.png .punch .reader .reverse .save  .stop .store
+rm -f .ascii .data .linker .plot.png .punch .reader .reverse .save  .stop .store
 #echo loading Algol
 cp bin/903algol/alg16klg_masd_store .store
 #echo convert input tape

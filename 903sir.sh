@@ -10,7 +10,7 @@ then
     exit
 fi
 #echo remove hidden files
-rm -f .ascii .data .linker .plot.png .punch .reader .reverse .save  .stop .store
+rm -f .ascii .data .linker .plot.png .punch .reader .reverse .save  .stop .store .linker
 #echo load assembler
 ./emu900 -j=8181 -reader="bin/903sir/sir(iss6)(5500)"
 #echo convert input tape $1
