@@ -1,10 +1,3 @@
-.reader
-.punch
-.save
-.data
-.ascii
-.linker
-.reverse
-.plot.png
-.store
-.stop
+.*
+*~
+#*#
