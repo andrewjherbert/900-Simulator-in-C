@@ -9,7 +9,7 @@ then
     echo $1 not found in demos/903algol
     exit
 fi
-rm -f .*rm -f .ascii .data .linker .plot.png .punch .reader .reverse .save  .stop .store
+rm -f .ascii .data .linker .plot.png .punch .reader .reverse .save  .stop .store
 #echo loading Algol
 cp bin/903algol/alg16klg_ajh_store .store
 #echo convert input tape
@@ -17,21 +17,21 @@ cp bin/903algol/alg16klg_ajh_store .store
 #echo run translator in library mode
 ./emu900 -j=13 $2 >.translate
 if [ $?  = 2 ]
-then cat .translate
-     echo "\n*** Translator ran off end of source tape ***"
-     exit 2
+     then cat .translate # display translator output
+          echo "\n*** Translator ran off end of input tape ***"
+          exit 2
 fi
 cat .translate # display translator output
-cp .save .data # there might be data following source code
-# check to see if translation was successful
+cp .save .data
+# check to see if translation failed
 grep --silent "^FAIL$" .translate
 if [ $? != 0 ]
 then
-    #  check to see if library scan needed
+    # check to see if need to scan the library tape or not
     grep --silent "^FIRST  NEXT" .translate
     if [ $? != 0 ]
     then
-	#echo library scan
+	#echo Library scan
         ./emu900 -j=9 $2 -reader=bin/903algol/algol_tape3_iss7_plotting
         if [ $? != 0 ]
         then exit $?
@@ -39,10 +39,9 @@ then
     fi
     #echo run interpreter
     ./emu900 -j=10 $2 -reader=.data
-    if [ $? = 2 ]
-    then echo "\n*** Program ran off end of data tape ***"
+    if [ $?  = 2 ]
+    then echo "\n*** Program ran off input data tape ***"
     fi
-    #echo process output
     touch .punch
     ./from900text
     if  [ ! -s .ascii ]
@@ -68,9 +67,7 @@ else
     echo
     echo Abandoned after translation errors
     echo
-fi
-
-
+ fi
 
 
 

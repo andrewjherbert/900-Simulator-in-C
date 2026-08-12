@@ -1,0 +1,52 @@
+euler;
+"begin"
+
+"comment" this is David Holdsworth's demonstration of the Euler procedure
+        from the Algol 60 Report. To run under Andrew Herbert's version of
+        Elliott Algol it needed the following changes:
+        1) conversion to Elliott lexical form
+        2) making the actual arguments in the calls of the fct procedure 
+           parameter of euler be parsed as expressions, by wrapping them 
+           in (...). Note there is a spurious runtime error 1 if you omit 
+           this - it should be runtime error 1.
+           
+        Note the accuracy of the calculation of the series can be improved
+        by making i a real number and increasing the number of iterations;
+        
+"procedure" euler(fct, sum, eps, tim); "value" eps, tim; "integer" tim;
+"real" "procedure" fct; "real" sum, eps;
+"begin" "integer" i, k, n, t;  "array" m[0:15];  "real" mn, mp, ds;
+    "comment" "switch" sss := nextterm;
+    i := n := t := 0;  m[0] := fct((0));  sum := m[0]/2;
+nextterm: i := i+1;
+          mn := fct((i));
+          "for"  k := 0 "step" 1 "until" n "do"
+              "begin" mp := (mn + m[k])/2;  m[k] := mn;  mn := mp  "end" means;
+                      "if"  (abs(mn) < abs(m[n])) "and" (n<15)  "then"
+                          "begin" ds := mn/2;  n := n+1;  m[n] := mn  "end" accept
+                       "else"  ds := mn;
+                       sum := sum + ds;
+                       "if"  abs(ds) < eps  "then"  t := t+1  "else"  t := 0;
+                       "if"  t < tim  "then" "goto" nextterm;
+"end" euler;
+
+"real" ss;  "integer" i;
+
+"real" "procedure" eee(x); "value" x; "integer" x;
+           eee := 1/(x+1)^2;
+
+    sameline;
+
+    euler(eee, ss, 0.0001, 7);
+    "print" { Euler  = }, ss, {{l}};
+
+    ss := 4*arctan(1);
+    "print" { pi^2/6 = }, ss*ss/6, {{l}};
+
+    ss := 0;
+    "for" i := 1 "step" 1 "until" 50 "do"
+        ss := ss + (1/i^2);
+    "print" { sum    = }, ss, {{l}}
+
+"end"
+  
