@@ -2,9 +2,9 @@
 
 A simple simulator in C for the Elliott 900 range of minicomputers.
 
-This repository consists of a simulator for the Elliott 900 series of minicomputers
-written in C, along with supporting utilities.  It compliments a similar simulator
-written in Python, available at
+This repository consists of a simulator for the Elliott 900 series of 
+minicomputers written in C, along with supporting utilities.  It compliments a 
+similar simulator written in Python, available at
 
   https://github.com/andrewjherbert/900-Simulator-in-Python
 
@@ -42,3 +42,7 @@ for each of languages.
 
 The script x3.sh runs the Elliott 900 functional test program X3.
 
+The euler demo runs with masdalgol, the euler2 demo runs with ajhalgol. A 
+comment in each program explains the differences.
+
+AJH 12/082026
