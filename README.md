@@ -45,4 +45,4 @@ The script x3.sh runs the Elliott 900 functional test program X3.
 The euler demo runs with masdalgol, the euler2 demo runs with ajhalgol. A 
 comment in each program explains the differences.
 
-AJH 12/082026
+AJH 12/08/2026
